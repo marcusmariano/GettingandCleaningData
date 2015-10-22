@@ -17,6 +17,7 @@ setwd("D:/Marcus/Projetos/R/03 - Getting and Cleaning Data/project")
 library(tidyr)
 library(dplyr)
 library(data.table)
+library(stringr)
 
 ## loading required dataset
 
@@ -38,6 +39,11 @@ TestX <- read.table("UCI HAR Dataset/test/X_test.txt",
 TestY <- read.table("UCI HAR Dataset/test/y_test.txt", 
                     header = FALSE)
 
+## Remove all special characters
+namesAll$V2 <- str_replace_all(namesAll$V2, "[^[:alnum:]]", " ")
+
+## remove all whitespace
+namesAll$V2 <- str_replace_all(namesAll$V2, " ", "")
 
 ## add the names of columns TrainX
 setnames(TrainX, old = names(TrainX), new= namesAll$V2)
@@ -52,13 +58,12 @@ train_x <- TrainX[ ,-c(303:344, 382:423)]
 test_x <- TestX[ ,-c(303:344, 382:423)]
 
 
-## format the TrainX tidy dataset 
+## format the TrainX tidy dataset
 train_x_tiny <-  train_x %>%
     select(contains("std"), contains("mean")) %>%
     select(-contains("angle"), -contains("meanFreq")) %>%
     mutate(id = TrainY$V1) %>%
-    gather( activ, count, -id) %>%
-    separate(col = activ, c("signals", "measure", "axial")) %>%
+    gather( signals, count, -id) %>%
     mutate(status = "train")
 
 ## format the TrainY tidy dataset 
@@ -66,19 +71,21 @@ test_x_tiny <-  test_x %>%
     select(contains("std"), contains("mean")) %>%
     select(-contains("angle"), -contains("meanFreq")) %>%
     mutate(id = TestY$V1) %>%
-    gather( activ, count, -id) %>%
-    separate(col = activ, c("signals", "measure", "axial")) %>%
+    gather( signals, count, -id) %>%
     mutate(status = "test")
 
 
 ## delete dataset 
 rm(namesAll, label, TrainX, TrainY, TestX, TestY, train_x, test_x)
-rm(train_x_tiny, test_x_tiny)
+
 
 ## merge two dataset Train and Test
 dat = bind_rows(train_x_tiny, test_x_tiny)
 
-## 
+## delete dataset 
+rm(train_x_tiny, test_x_tiny)
+
+## locate the activity labels
 translator_function = function(element) {
     switch(element,
            '1' = "WALKING",
@@ -89,22 +96,26 @@ translator_function = function(element) {
            '6' = "LAYING")
 }
 
-## 
+## list activity labels
 activity_sapply = sapply(dat$id, translator_function)
 
-## 
+## add activity labels
 dat <- dat %>%
     mutate(activity = activity_sapply)
 
-##
+## calculate the mean and standard deviation for each measurement
 temp <- tapply(dat$count, dat[ , c("activity", "signals")], mean)
 
-##
+## creat a data frame
 data <- data.frame(temp)
 
-##
+## format a final result
 data <- data %>%
     mutate( activity = c("LAYING", "SITTING", "STANDING", "WALKING", 
     "WALKING_DOWNSTAIRS", "WALKING_UPSTAIRS"), 
     id = c("6", "4", "5", "1", "3", "2")) %>%
-    arrange(id)
+    arrange(id) %>%
+    select(id, activity, tBodyAccstdX:fBodyBodyGyroJerkMagmean)
+
+## save a table with a name "data.txt"
+write.table(data, "data.txt", row.name = FALSE)
