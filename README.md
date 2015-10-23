@@ -1,9 +1,3 @@
-# GettingandCleaningData
-
-Repo of Coursera of GettingandCleaningData
-
-==================================================================
-
 ---
 title       : Peer Assessments
 subtitle    : Getting and Cleaning Data Course Project
@@ -11,6 +5,8 @@ author      : Marcus Mariano
 job         : Mechanic Engineer
 ---
 ==================================================================
+
+# Repo of Coursera Gettingand Cleaning Data
 
 ### Reproducible Pitch Presentation
 
