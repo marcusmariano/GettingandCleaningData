@@ -18,7 +18,7 @@ This script is part of the course project in Getting and Cleaning Data of Data S
 
 ### File in the directory
 
-These are some file in the this directory, the most important is:
+These is a file in the this directory:
 
 * run_analysis.R
 
