@@ -8,7 +8,9 @@ job         : Mechanic Engineer
 
 # Repo of Coursera Gettingand Cleaning Data
 
-### Reproducible Pitch Presentation
+==================================================================
+
+### Gettingand Cleaning Data
 
 This script is part of the course project in Getting and Cleaning Data of Data Science Specialization
 
@@ -18,22 +20,17 @@ This script is part of the course project in Getting and Cleaning Data of Data S
 
 These are some file in the this directory, the most important is:
 
-1. Files
+* run_analysis.R
 
-* index.Rmd
-* index.md
-    * index.html
-
-2.  Directories
-
-    * assets
-    * libraries
-    
 ==================================================================
 
-### Run Application
+### Run Script
  
 Everyone can run this application open up in the RStudio and follow the steps:
+
+- First of all download the dataset in the link:
+
+[Human Activity Recognition Using Smartphones Data Set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
 - Go to the directory of the files
  
@@ -41,14 +38,6 @@ Everyone can run this application open up in the RStudio and follow the steps:
 
 > setwd("~/sample/project")
 
-- Load the libraries
 
-> library(devtools); library(slidify);library(knitr)
 
-- Run Slidify command to .Rmd file:
 
-> slidify('index.Rmd')
-
-- Open up Presentation in the browser with the command:
-
-> browseURL('index.html')
