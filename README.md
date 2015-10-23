@@ -48,7 +48,7 @@ Everyone can run this script, open up in the RStudio and follow the steps:
 
 - The script working on with that structure of directory for the dataset.
 
-- clique on the source button on RStudio to run the script
+- Clique on the source button on RStudio to run the script
 
 - It will loading all of the library, open up the tables with data, execute all code to format the data and create a tidy dataset. 
 
