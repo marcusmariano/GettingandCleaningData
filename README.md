@@ -26,18 +26,30 @@ These are some file in the this directory, the most important is:
 
 ### Run Script
  
-Everyone can run this application open up in the RStudio and follow the steps:
+Everyone can run this script, open up in the RStudio and follow the steps:
 
-- First of all download the dataset in the link:
-
-[Human Activity Recognition Using Smartphones Data Set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
-
-- Go to the directory of the files
- 
 - Set the working directory
 
 > setwd("~/sample/project")
 
+- First of all pick up download the dataset in the link:
 
+[Human Activity Recognition Using Smartphones Data Set](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+
+- Extracts the zip file in the working directory, it will be created a levels of directory as following:
+
+- For Train
+
+> UCI HAR Dataset/train/
+
+- For Test
+
+> UCI HAR Dataset/test/
+
+- The script working on with that structure of directory for the dataset.
+
+- clique on the source button on RStudio to run the script
+
+- It will loading all of the library and create a tidy dataset. 
 
 
