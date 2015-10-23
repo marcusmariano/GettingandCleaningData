@@ -38,11 +38,11 @@ Everyone can run this script, open up in the RStudio and follow the steps:
 
 - Extracts the zip file in the working directory, it will be created a levels of directory as following:
 
-- For Train
+- For training set
 
 > UCI HAR Dataset/train/
 
-- For Test
+- For Test set
 
 > UCI HAR Dataset/test/
 
@@ -50,6 +50,6 @@ Everyone can run this script, open up in the RStudio and follow the steps:
 
 - clique on the source button on RStudio to run the script
 
-- It will loading all of the library and create a tidy dataset. 
+- It will loading all of the library, open up the tables with data, execute all code to format the data and create a tidy dataset. 
 
 
